@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        body
+        {
+            padding: 0;
+            margin: 0;
+        }
+        #root
+        {
+            width: 708px;
+            margin: 25px auto;
+        }
+        #month
+        {
+            width: 708px;
+            text-align: center;
+            float: left;
+            font-size: 30px;
+        }
+        #start
+        {
+            float: left;
+            margin-top: 20px;
+        }
+        .week
+        {
+            float: left;
+            width: 100px;
+            height: 25px;
+            border: 1px solid black;
+            text-align: center;
+            border-right: 0px;
+        }
+        #sun
+        {
+            color: red;
+        }
+        #sat
+        {
+            color: blue;
+            border-right: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div id="month"><b>January 2022</b></div>
+        <div id="start">
+            <div class="week" id="sun">Sun</div>
+            <div class="week">Mon</div>
+            <div class="week">Tue</div>
+            <div class="week">Wed</div>
+            <div class="week">Thu</div>
+            <div class="week">Fri</div>
+            <div class="week" id="sat">Sat</div>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</body>
+</html>

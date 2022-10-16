@@ -7,18 +7,16 @@ function ResetCalendar()
 {
     var current = new Date(year, month);
     var firstDay = current.getDay();
-    var posList = [0, firstDay];
+    var coord = [0, firstDay];
     var day = 1;
     var nextRest = 0;
 
     while (current.getMonth() == month)
     {
-        var pos = document.getElementById(posList[0].toString() + posList[1].toString());
+        var pos = document.getElementById(coord[0].toString() + coord[1].toString());
         pos.innerHTML = "&nbsp" + day.toString();
         
         var type;
-
-        
 
         for (type = 0; rest.length > type; type++)
         {
@@ -51,13 +49,13 @@ function ResetCalendar()
             pos.innerHTML += "<br>&nbsp대체공휴일";
         }
         
-        if (posList[1] == 6)
+        if (coord[1] == 6)
         {
-            posList[1] = 0;
-            posList[0]++;
+            coord[1] = 0;
+            coord[0]++;
         }
         else
-            posList[1]++;
+            coord[1]++;
         day++;
         current = new Date(year, month, day);
     }

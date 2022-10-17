@@ -61,13 +61,21 @@ function ResetCalendar()
         if (isNext[type])
         {
             if (pos.className != "sund")
-                pos.className = "sund";
+            {
+                if (pos.className == "satd")
+                    pos.className = "sundAlt";
+                else
+                    pos.className = "sund";
+            }
             else
                 nextRest += 1;
         }
         else if (type < rest.length)
         {
-            pos.className = "sund";
+            if (pos.className == "satd")
+                pos.className = "sundAlt";
+            else
+                pos.className = "sund";
         }
 
         if (nextRest != 0 && pos.className != "sund")

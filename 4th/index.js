@@ -4,7 +4,7 @@ var rest = [[10, 3], [10, 9], [1, 1], [3, 1], [5, 5], [6, 6], [8, 15], [12, 25]]
 var isNext = [true, true, false, true, true, false, true, false];
 var monthNames = ["January", "February", "March", "April", "May", "June", 
 "July", "August", "September", "October", "November", "December"];
-
+var listName = ["list", "eList", "tList", "teList"];
 
 function ResetCalendar()
 {
@@ -28,7 +28,7 @@ function ResetCalendar()
         }
     }
     var current = new Date(year, month);
-    var monthDiv = document.getElementById("month");
+    var monthDiv = document.getElementById("title");
     monthDiv.innerHTML = "<b>" + monthNames[current.getMonth()] + " " + year.toString() + "</b>";
     var firstDay = current.getDay();
     var coord = [0, firstDay];
@@ -111,8 +111,131 @@ function ResetCalendar()
         }
         else
             coord[1]++;
-        day++;
-        current = new Date(year, month, day);
+        current = new Date(year, month, ++day);
+    }
+}
+
+function ShowMonthList()
+{
+    var body = document.getElementById("body");
+    body.innerHTML = '<div id="root2"></div>';
+    var root = document.getElementById("root2");
+    root.innerHTML = '<div id="title2"><b>' + year.toString() + '</b></div>';
+    
+    for (var i = 0; i < 12; i++)
+    {
+        var classN;
+        if (i < 3)
+            classN = "tList";
+        else if (i == 3)
+            classN = "teList";
+        else if (i % 4 == 3)
+            classN = "eList";
+        else
+            classN = "list";
+        root.innerHTML += '<div class="'+ classN + '" onclick="TabMonth' + i + '()"><b class="mid">' + monthNames[i].substring(0, 3) + '</b></div>';
+    }
+}
+
+function TabMonth0()
+{
+    month = 0;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth1()
+{
+    month = 1;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth2()
+{
+    month = 2;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth3()
+{
+    month = 3;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth4()
+{
+    month = 4;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth5()
+{
+    month = 5;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth6()
+{
+    month = 6;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth7()
+{
+    month = 7;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth8()
+{
+    month = 8;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth9()
+{
+    month = 9;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth10()
+{
+    month = 10;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function TabMonth11()
+{
+    month = 11;
+    ShowCalendar();
+    ResetCalendar();
+}
+
+function ShowCalendar()
+{
+    var body = document.getElementById("body");
+    body.innerHTML = '<div id="root"></div>';
+    var root = document.getElementById("root");
+    root.innerHTML = '<div id="title" onclick="ShowMonthList()"><b>January 2022</b></div>';
+    root.innerHTML += '<div id="start"><div class="week" id="sun">Sun</div><div class="week">Mon</div><div class="week">Tue</div><div class="week">Wed</div><div class="week">Thu</div><div class="week">Fri</div><div class="week" id="sat">Sat</div></div>';
+    for (var i = 0; i < 6; i++)
+    {
+        root.innerHTML += "<div>"
+        for (var j = 0; j < 7; j++)
+        {
+            root.innerHTML += '<div id="' + i.toString() + j.toString() + '" class="day"></div>';
+        }
+        root.innerHTML += "</div>"
     }
 }
 

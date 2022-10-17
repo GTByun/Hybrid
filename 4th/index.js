@@ -2,8 +2,8 @@ var year = new Date().getFullYear();
 var month = new Date().getMonth();
 var rest = [[10, 3], [10, 9], [1, 1], [3, 1], [5, 5], [6, 6], [8, 15], [12, 25]];
 var isNext = [true, true, false, true, true, false, true, false];
-var monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+var monthNames = ["January", "February", "March", "April", "May", "June", 
+"July", "August", "September", "October", "November", "December"];
 
 
 function ResetCalendar()

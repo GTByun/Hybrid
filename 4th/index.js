@@ -8,6 +8,25 @@ var monthNames = ["January", "February", "March", "April", "May", "June",
 
 function ResetCalendar()
 {
+    for (var i = 0; i < 6; i++)
+    {
+        for (var j = 0; j < 7; j++)
+        {
+            var pos = document.getElementById(i.toString() + j.toString());
+            switch (j)
+            {
+                case 0:
+                    pos.className = "sund";
+                    break;
+                case 6:
+                    pos.className = "satd";
+                    break;
+                default:
+                    pos.className = "day";
+                    break;
+            }
+        }
+    }
     var current = new Date(year, month);
     var monthDiv = document.getElementById("month");
     monthDiv.innerHTML = "<b>" + monthNames[current.getMonth()] + " " + year.toString() + "</b>";

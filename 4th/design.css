@@ -96,6 +96,7 @@ body
     border-right: 0px;
     text-align: center;
     font-size: 25px;
+    margin-top: 20px;
 }
 .teList
 {
@@ -105,6 +106,7 @@ body
     border: 1px solid black;
     text-align: center;
     font-size: 25px;
+    margin-top: 20px;
 }
 .list
 {
@@ -117,6 +119,12 @@ body
     text-align: center;
     font-size: 25px;
 }
+.invList
+{
+    float: left;
+    width: 101px;
+    height: 101px;
+}
 .eList
 {
     float: left;
@@ -127,8 +135,35 @@ body
     text-align: center;
     font-size: 25px;
 }
+#leftButton
+{
+    float: left;
+    width: 201px;
+    height: 100px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+    padding: auto;
+}
+#rightButton
+{
+    float: left;
+    width: 201px;
+    height: 100px;
+    border: 1px solid black;
+    border-left: 0px;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+}
 .mid
 {
     display: block;
     margin-top: 28px;
+}
+.buttonMid
+{
+    display: block;
+    margin-top: 17px;
 }

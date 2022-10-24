@@ -235,12 +235,12 @@ function ShowCalendar()
     root.innerHTML += '<div id="start"><div class="week" id="sun">Sun</div><div class="week">Mon</div><div class="week">Tue</div><div class="week">Wed</div><div class="week">Thu</div><div class="week">Fri</div><div class="week" id="sat">Sat</div></div>';
     for (var i = 0; i < 6; i++)
     {
-        root.innerHTML += "<div>"
+        root.innerHTML += "<div>";
         for (var j = 0; j < 7; j++)
         {
             root.innerHTML += '<div id="' + i.toString() + j.toString() + '" class="day"></div>';
         }
-        root.innerHTML += "</div>"
+        root.innerHTML += "</div>";
     }
 }
 
@@ -272,8 +272,8 @@ function ShowYearList()
         root.innerHTML += '<div class="' + classN + '"' + (yearNum != -1 ? 'onclick="TabYear' + yearNum.toString() + '()"' : "") + '><b class="mid">' + (yearNum != -1 ? (tenYear + yearNum).toString() : "") + '</b></div>';
     }
 
-    root.innerHTML += '<div id="leftButton" onclick="TabLeft()"><b class="buttonMid"><<</b></div>'
-    root.innerHTML += '<div id="rightButton" onclick="TabRight()"><b class="buttonMid">>></b></div>'
+    root.innerHTML += '<div id="leftButton" onclick="TabLeft()"><b class="buttonMid"><<</b></div>';
+    root.innerHTML += '<div id="rightButton" onclick="TabRight()"><b class="buttonMid">>></b></div>';
 }
 
 function TabYear0()

@@ -1,11 +1,16 @@
 var year = new Date().getFullYear();
 var month = new Date().getMonth();
 var tenYear = year - year % 10;
-var rest = [[10, 3], [10, 9], [1, 1], [3, 1], [5, 5], [6, 6], [8, 15], [12, 25]];
-var isNext = [true, true, false, true, true, false, true, false];
+
+function cDay(month, day, type, isNext)
+{
+    return {month: month, day: day, type: type, isNext: isNext};
+}
+
+var rest = [cDay(10, 3, "개", true), cDay(10, 9, "한", true), cDay(1, 1, "신", false), cDay(3, 1, "3", true), cDay(5, 5, "어", true),
+cDay(6, 6, "현", false), cDay(8, 15, "광", true), cDay(12, 25, "기", false)];
 var monthNames = ["January", "February", "March", "April", "May", "June", 
 "July", "August", "September", "October", "November", "December"];
-var listName = ["list", "eList", "tList", "teList"];
 
 function ResetCalendar()
 {
@@ -43,61 +48,67 @@ function ResetCalendar()
         pos.innerHTML = "&nbsp" + day.toString();
         
         var type;
+        var checkDay;
 
         for (type = 0; restCurrent.length > type; type++)
         {
-            var checkDay = restCurrent[type];
-            if (current.getMonth() + 1 == checkDay[0] && current.getDate() == checkDay[1])
+            checkDay = restCurrent[type];
+            if (current.getMonth() + 1 == checkDay.month && current.getDate() == checkDay.day)
                 break;
         }
 
-        switch (type)
+        if (type < restCurrent.length)
         {
-            case 0:
-                pos.innerHTML += "<br>&nbsp개천절";
-                break;
-            case 1:
-                pos.innerHTML += "<br>&nbsp한글날";
-                break;
-            case 2:
-                pos.innerHTML += "<br>&nbsp신정";
-                break;
-            case 3:
-                pos.innerHTML += "<br>&nbsp3·1절";
-                break;
-            case 4:
-                pos.innerHTML += "<br>&nbsp어린이날";
-                break;
-            case 5:
-                pos.innerHTML += "<br>&nbsp현충일";
-                break;
-            case 6:
-                pos.innerHTML += "<br>&nbsp광복절";
-                break;
-            case 7:
-                pos.innerHTML += "<br>&nbsp기독탄신일";
-                break;
-        }
+            switch (checkDay.type)
+            {
+                case "개":
+                    pos.innerHTML += "<br>&nbsp개천절";
+                    break;
+                case "한":
+                    pos.innerHTML += "<br>&nbsp한글날";
+                    break;
+                case "신":
+                    pos.innerHTML += "<br>&nbsp신정";
+                    break;
+                case "3":
+                    pos.innerHTML += "<br>&nbsp3·1절";
+                    break;
+                case "어":
+                    pos.innerHTML += "<br>&nbsp어린이날";
+                    break;
+                case "현":
+                    pos.innerHTML += "<br>&nbsp현충일";
+                    break;
+                case "광":
+                    pos.innerHTML += "<br>&nbsp광복절";
+                    break;
+                case "기":
+                    pos.innerHTML += "<br>&nbsp기독탄신일";
+                    break;
+            }
 
-        if (isNext[type])
-        {
-            if (pos.className != "sund")
+            if (restCurrent[type].isNext)
+            {
+                if (pos.className != "sund")
+                {
+                    if (pos.className == "satd")
+                        pos.className = "sundAlt";
+                    else
+                        pos.className = "sund";
+                }
+                else
+                    nextRest += 1;
+            }
+            else
             {
                 if (pos.className == "satd")
                     pos.className = "sundAlt";
                 else
                     pos.className = "sund";
             }
-            else
-                nextRest += 1;
         }
-        else if (type < restCurrent.length)
-        {
-            if (pos.className == "satd")
-                pos.className = "sundAlt";
-            else
-                pos.className = "sund";
-        }
+
+        
 
         if (nextRest != 0 && pos.className != "sund")
         {

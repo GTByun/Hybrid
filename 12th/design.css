@@ -1,0 +1,30 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+#base
+{
+    width: 640px;
+    margin: 0 auto;
+}
+#bigPlate
+{
+    width: 640px;
+    height: 640px;
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 3.125%;
+    grid-gap : 3.125%;
+    background-color: aliceblue;
+    border-radius: 3.125%;
+    
+}
+.smallPlate
+{
+    float: left;
+    border-radius: 5.714286%;
+    background-color: bisque;
+}

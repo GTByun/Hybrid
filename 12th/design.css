@@ -5,13 +5,14 @@ body
 }
 #base
 {
-    width: 640px;
+    width: 75vmin;
     margin: 0 auto;
+    position: relative;
 }
 #bigPlate
 {
-    width: 640px;
-    height: 640px;
+    width: 75vmin;
+    height: 75vmin;
     float: left;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -27,4 +28,25 @@ body
     float: left;
     border-radius: 5.714286%;
     background-color: bisque;
+}
+.topFont
+{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 5vmin;
+    font-weight: bold;
+}
+
+.top
+{
+    position: absolute;
+    top: 2.34375vmin;
+    left: 2.34375vmin;
+    width: 16.9921875vmin;
+    height: 16.9921875vmin;
+    float: left;
+    border-radius: 5.714286%;
+    background-color: crimson;
+    display: table;
 }

@@ -48,16 +48,9 @@ function Update()
             var block = document.getElementById((x + 1).toString() + (y + 1).toString());
             block.style.left = pos[x];
             block.style.top = pos[y];
-            if (map[y][x] != 0)
-            {
-                block.firstChild.innerHTML = map[y][x];
-                block.style.backgroundColor = "crimson";
-            }
-            else
-            {
-                block.firstChild.innerHTML = "";
-                block.style.backgroundColor = "transparent";
-            }
+            var isNotZero = map[y][x] != 0;
+            block.firstChild.innerHTML = isNotZero ? map[y][x] : "";
+            block.style.backgroundColor = isNotZero ? "crimson" : "transparent";
         }
     }
 }

@@ -21,7 +21,14 @@ body
     grid-gap : 3.125%;
     background-color: aliceblue;
     border-radius: 3.125%;
-    
+}
+
+#scorePlate
+{
+    width: 75vmin;
+    margin: 3vmin 0 3vmin 0;
+    float: left;
+    border-radius: 3.125%;
 }
 .smallPlate
 {
@@ -49,4 +56,31 @@ body
     border-radius: 5.714286%;
     background-color: crimson;
     display: table;
+}
+
+#score
+{
+    font-size: 3vmin;
+}
+
+#clearPlate
+{
+    width: 50vmin;
+    height: 50vmin;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightblue;
+    border-radius: 10%;
+    display: none;
+}
+
+#clear
+{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 9vmin;
+    font-weight: bold;
 }

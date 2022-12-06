@@ -10,6 +10,9 @@
 <body>
     <script src="https://unpkg.com/vue@3"></script>
     <div id="base">
+        <div id="scorePlate">
+            <div id="score">score : </div>
+        </div>
         <div id="bigPlate">
             <div class="smallPlate" v-for="index in bigPlates"></div>
             <div class="top" id="11">
@@ -61,7 +64,9 @@
                 <div class="topFont"></div>
             </div>
         </div>
-        
+        <div id="clearPlate">
+            <div id="clear">Clear!</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

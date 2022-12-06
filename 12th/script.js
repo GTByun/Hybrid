@@ -6,17 +6,43 @@ const myKey =
     UP: 38
 };
 
-var pos = ["2.34375vmin", "21.6796875vmin", "41.015625vmin", "60.3515625vmin"];
-
+var pos = [2.34375, 21.6796875, 41.015625, 60.3515625];
+var yOffset = 9.969957;
 var map =
 [[0, 0, 0, 0],
 [0, 0, 0, 0],
 [0, 0, 0, 0],
 [0, 0, 0, 0]];
 
-var gameover = false;
+var AnimationMap = 
+[[0, 0, 0, 0],
+[0, 0, 0, 0],
+[0, 0, 0, 0],
+[0, 0, 0, 0]];
 
-function Update()
+var score = 0;
+var initialize = false;
+
+class MoveNMerge {
+    constructor(coord, isMerge, isDestroy, isCreate) {
+        this.coord = coord;
+        this.isMerge = isMerge;
+        this.isDestroy = isDestroy;
+        this.isCreate = isCreate;
+    }
+}
+
+function RandomNumber(range)
+{
+    var rtn = Math.pow(2, Math.floor(Math.random() * range));
+    if (rtn == 1)
+    {
+        rtn -= 1
+    }
+    return rtn;
+}
+
+function RandomCreate(num)
 {
     var none = [];
     for (var y = 0; y < 4; y++)
@@ -31,12 +57,28 @@ function Update()
     }
     if (none.length == 0)
     {
-        gameover = true;
+        var plate = document.getElementById("clearPlate");
+        plate.style.display = "table";
+        plate.style.backgroundColor = "Red";
+        plate.firstChild.innerHTML = "Game Over!";
         window.onkeydown = null;
         return;
     }
     var coord = none[Math.floor(Math.random() * none.length)];
-    map[coord[1]][coord[0]] = 1;
+    map[coord[1]][coord[0]] = num;
+    score += num;
+}
+
+function Update()
+{
+    if (initialize)
+    {
+        RandomCreate(2);
+    }
+    else
+    {
+        initialize = true;
+    }
     for (var y = 0; y < 4; y++)
     {
         for (var x = 0; x < 4; x++)
@@ -45,14 +87,26 @@ function Update()
             {
                 map[y][x]--;
             }
+            if (map[y][x] == 2048)
+            {
+                document.getElementById("clearPlate").style.display = "table";
+                window.onkeydown = null;
+            }
             var block = document.getElementById((x + 1).toString() + (y + 1).toString());
-            block.style.left = pos[x];
-            block.style.top = pos[y];
-            var isNotZero = map[y][x] != 0;
-            block.firstChild.innerHTML = isNotZero ? map[y][x] : "";
-            block.style.backgroundColor = isNotZero ? "crimson" : "transparent";
+            if (map[y][x] != 0)
+            {
+                block.style.left = pos[x] + "vmin";
+                block.style.top = pos[y] + yOffset + "vmin";
+                block.firstChild.innerHTML = map[y][x];
+                block.style.display = "table";
+            }
+            else
+            {
+                block.style.display = "none";
+            }
         }
     }
+    document.getElementById("score").innerHTML = "Score : " + score;
 }
 
 const {createApp} = Vue;
@@ -226,6 +280,29 @@ function InputDown()
     Update();
 }
 
+function Initializing()
+{
+    var myData = [];
+    myData.push(RandomNumber(3));
+    if (myData[0] == 0)
+    {
+        myData.push(Math.pow(2, Math.floor(Math.random() * 2 + 1)));
+    }
+    else if (myData[0] == 2)
+    {
+        myData.push(RandomNumber(3));
+    }
+    else if (myData[0] == 4)
+    {
+        myData.push(RandomNumber(2));
+    }
+    for (i = 0; i < 2; i++)
+    {
+        RandomCreate(myData[i]);
+    }
+}
+
+Initializing();
 Update();
 window.onkeydown = KeyInput;
 

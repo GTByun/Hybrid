@@ -23,7 +23,7 @@ var AnimationMap =
 var score = 0;
 var initialize = false;
 
-class MoveNMerge {
+class Animations {
     constructor(coord, isMerge, isDestroy, isCreate) {
         this.coord = coord;
         this.isMerge = isMerge;
@@ -290,7 +290,12 @@ function Initializing()
     }
     else if (myData[0] == 2)
     {
-        myData.push(RandomNumber(3));
+        var that = Math.pow(4, Math.floor(Math.random() * 2));
+        if (that == 1)
+        {
+            that--;
+        }
+        myData.push(that);
     }
     else if (myData[0] == 4)
     {
